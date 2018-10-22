@@ -6,8 +6,9 @@ export default class SignUp extends Component {
             this.state = {
                 email: "mon@email.com",
                 password: "monPassw0rd",
+                confirm: "monPassw0rd" ,
                 name: "James",
-                lastname: "Bond"
+                lastName: "Bond"
                 
             }
    this.updateEmail = this.updateEmail.bind(this);
@@ -22,7 +23,12 @@ export default class SignUp extends Component {
     handdleSubmit(event){
         event.preventDefault();
         console.log(this.state)
-        alert("Ce message va s'auto-détruire");
+        if(this.state.password !== this.state.confirm){
+            alert("confirm password is different to your password");
+        }else{
+            alert("Information submit, this message will self-destruct ");
+        }
+        
          
 
     }
@@ -34,8 +40,9 @@ export default class SignUp extends Component {
          <h1>{JSON.stringify(this.state,1,1)}</h1>
          <  input type="email" name="email" placeholder="e-mail here" autoComplete="off" value={this.state.email} onChange= {this.updateEmail}/>
          <  input type="password" name="password" placeholder="password" autoComplete="off" value={this.state.password} onChange= {this.updateEmail}/>
+         <  input type="password" name="confirm" placeholder="confirm password" autoComplete="off" value={this.state.confirm} onChange= {this.updateEmail}/>
          <  input type="text" name="name" placeholder="Name" autoComplete="off" value={this.state.name} onChange= {this.updateEmail}/>
-         <  input type="text" name="lastName" placeholder="Last Name" autoComplete="off" value={this.state.lastname} onChange= {this.updateEmail}/>
+         <  input type="text" name="lastName" placeholder="Last Name" autoComplete="off" value={this.state.lastName} onChange= {this.updateEmail}/>
          <input type="submit" value="Submit" />
       </form>
     )
